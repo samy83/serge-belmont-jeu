@@ -19,6 +19,8 @@ export interface GameConfig {
    * Surchargeable par ?maxframe=1000 (outillage : navigateurs qui brident requestAnimationFrame).
    */
   maxFrameMs: number;
+  /** Compteur de cadence a l'ecran (?fps). */
+  showFps: boolean;
   version: string;
 }
 
@@ -33,6 +35,7 @@ export function loadConfig(): GameConfig {
   const maxFrame = Number(params.get('maxframe'));
   return {
     maxFrameMs: Number.isFinite(maxFrame) && maxFrame > 0 ? maxFrame : 50,
+    showFps: params.has('fps'),
     assetBaseUrl: import.meta.env.BASE_URL || './',
     monetizationEnabled: env('VITE_MONETIZATION') === 'on',
     facebookAppId: env('VITE_FACEBOOK_APP_ID'),

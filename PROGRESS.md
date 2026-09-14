@@ -20,7 +20,11 @@ Fait et vérifié :
       obstacles gris, effets (éclats, étincelles, ondes, flashs, secousse),
       chutes animées, victoire (photo entière).
 - [x] Entrée tactile (viser / tirer / annuler / déplacer le canon), souris
-      pour le bureau.
+      pour le bureau ; anticipation de la bille chargée pendant la visée.
+- [x] Game feel : recul du canon, étincelles aux rebonds, secousse des
+      voisines à la pose, tremblement/contraction avant l'explosion, éclats,
+      ondes, flash, secousse d'écran proportionnelle, textes flottants
+      (« Cascade ×2 », « Superbe ! »), bannière d'entrée de niveau.
 - [x] Interface DOM : titre, niveaux (déverrouillage, trophées, meilleur
       score), HUD (tirs, trophée encore atteignable), pause (reprendre,
       recommencer, niveaux, volumes), victoire (photo, trophée, stats, badges,
@@ -69,6 +73,9 @@ niveau 5 (obstacles gris, billes suspendues, chutes).
   la première visite doit charger chaque niveau/photo pour qu'il soit
   disponible hors ligne ensuite.
 - Aucun test automatisé du rendu.
+- Le compteur `?fps` et le `FpsMonitor` peuvent abaisser le palier à « low »
+  dans un navigateur qui bride requestAnimationFrame (outil de capture) :
+  ce n'est pas représentatif d'un téléphone.
 
 ## Prochaines étapes (ordre conseillé)
 

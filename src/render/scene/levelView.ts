@@ -3,7 +3,7 @@
  * visee, effets, canon. Elle rejoue les resultats du coeur (vol, pose,
  * explosions, chutes) sous forme d'animations, et ne decide jamais rien.
  */
-import { Container, Graphics, Sprite, type Renderer } from 'pixi.js';
+import { Container, Graphics, Sprite, Text, TextStyle, type Renderer } from 'pixi.js';
 import type { GameSession, ShotResult } from '@core/game/session';
 import type { ResolutionStep } from '@core/board/resolve';
 import type { Vec2 } from '@core/model/types';
@@ -43,6 +43,7 @@ export class LevelView {
   private readonly obstaclesLayer = new Container();
   private readonly frame = new Graphics();
   private readonly balls = new Map<number, BallView>();
+  private readonly floatingTexts: Text[] = [];
   private time = 0;
   private moteTimer = 0;
   private lastColor: string;
@@ -176,6 +177,7 @@ export class LevelView {
 
   /** Affiche la ligne de visee pour une direction (ou la cache si null). */
   setAim(dir: Vec2 | null): void {
+    this.cannon.setCharging(dir !== null);
     if (!dir) {
       this.trajectory.hide();
       this.cannon.setAim(0, -1, false);
@@ -264,6 +266,8 @@ export class LevelView {
     await Promise.all(views.map((v) => v.crack(this.tweens, 190 + 50 * Math.min(step.chain, 3))));
 
     this.onFx({ type: 'explode', size, chain: step.chain });
+    if (step.chain >= 1) this.floatText(`Cascade ×${step.chain + 1}`, step.centerX, step.centerY - r * 2.2, 1 + Math.min(step.chain, 3) * 0.12);
+    else if (size >= 6) this.floatText(size >= 8 ? 'Magnifique !' : 'Superbe !', step.centerX, step.centerY - r * 2.2, 1.05);
     this.effects.flash(step.centerX, step.centerY, spec.glow, 1.3 + 0.18 * size, 0.32);
     this.effects.ring(step.centerX, step.centerY, spec.glow, 1.4 + 0.25 * size, 0.55);
     this.effects.ring(step.centerX, step.centerY, 0xffffff, 0.9 + 0.2 * size, 0.4, 0.6);
@@ -317,6 +321,41 @@ export class LevelView {
       this.effects.shake(1.5, 120);
     }
     await this.tweens.delay(120);
+  }
+
+  /** Mot qui s'eleve et s'efface (cascade, gros groupe). Textes en reserve. */
+  private floatText(text: string, x: number, y: number, scale = 1): void {
+    let t = this.floatingTexts.find((f) => !f.visible);
+    if (!t) {
+      if (this.floatingTexts.length >= 3) return;
+      t = new Text({
+        text,
+        style: new TextStyle({
+          fontFamily: 'Georgia, "Times New Roman", serif',
+          fontSize: 54,
+          fontStyle: 'italic',
+          fill: 0xf2dfa4,
+          stroke: { color: 0x1a1030, width: 5 },
+          dropShadow: { alpha: 0.6, blur: 6, distance: 3, color: 0x000000 },
+        }),
+      });
+      t.anchor.set(0.5);
+      this.floatingTexts.push(t);
+      this.effects.layer.addChild(t);
+    }
+    t.text = text;
+    t.visible = true;
+    t.alpha = 0;
+    const b = this.session.level.board;
+    t.position.set(Math.max(150, Math.min(b.width - 150, x)), Math.max(80, y));
+    t.scale.set(scale * 0.6);
+    const target = t;
+    void this.tweens.to(target.scale, { x: scale, y: scale }, 260, Easing.outBack);
+    void this.tweens.to(target, { alpha: 1 }, 120);
+    void this.tweens.to(target, { y: target.y - 70 }, 950, Easing.outQuad).then(() => {
+      target.visible = false;
+    });
+    void this.tweens.delay(520).then(() => this.tweens.to(target, { alpha: 0 }, 400, Easing.inQuad));
   }
 
   /** Fin de niveau : lumiere, onde, et la photographie entiere. */

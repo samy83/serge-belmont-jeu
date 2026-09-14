@@ -43,6 +43,9 @@ export class GameController {
   private busy = false;
   private playbackToken: CancelToken | null = null;
   private currentLevel: LevelDef | null = null;
+  private fpsLabel: HTMLElement | null = null;
+  private fpsAccum = 0;
+  private fpsFrames = 0;
 
   constructor(private readonly config: GameConfig) {
     this.progression = new ProgressionStore(createStorage());
@@ -99,12 +102,26 @@ export class GameController {
     // Le ticker de Pixi plafonne lui aussi le pas (1000 / minFPS, soit 100 ms par defaut) : on aligne les deux plafonds.
     this.gameApp.app.ticker.minFPS = Math.min(10, 1000 / this.config.maxFrameMs);
     this.gameApp.app.ticker.add((ticker) => this.loop(Math.min(this.config.maxFrameMs, ticker.deltaMS)));
+    if (this.config.showFps) {
+      this.fpsLabel = document.createElement('div');
+      this.fpsLabel.style.cssText = 'position:fixed;left:6px;bottom:6px;z-index:99;font:12px monospace;color:#9f9;pointer-events:none';
+      document.body.appendChild(this.fpsLabel);
+    }
     this.showTitle();
   }
 
   // ----- Boucle -----
 
   private loop(dtMs: number): void {
+    if (this.fpsLabel) {
+      this.fpsAccum += this.gameApp.app.ticker.elapsedMS;
+      this.fpsFrames++;
+      if (this.fpsAccum >= 500) {
+        this.fpsLabel.textContent = `${Math.round((this.fpsFrames * 1000) / this.fpsAccum)} fps · ${this.quality.tier} · ${this.view?.effects.activeCount ?? 0} part.`;
+        this.fpsAccum = 0;
+        this.fpsFrames = 0;
+      }
+    }
     if (this.phase === 'paused') return;
     this.tweens.update(dtMs);
     if (this.session && this.view && (this.phase === 'playing' || this.phase === 'victory')) {

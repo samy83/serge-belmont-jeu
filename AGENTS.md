@@ -39,8 +39,9 @@ python tools/make_placeholder_photos.py  # (re)génère public/photos/*.jpg de s
 ```
 
 Outils de débogage dans le navigateur : `window.__sb.controller` (le chef
-d'orchestre), `?maxframe=1000` (pas de temps non plafonné, pour les
-navigateurs qui brident requestAnimationFrame), `?nosw` (pas de service worker).
+d'orchestre), `?fps` (compteur de cadence, palier, particules), `?maxframe=1000`
+(pas de temps non plafonné, pour les navigateurs qui brident
+requestAnimationFrame), `?nosw` (pas de service worker).
 
 ## 3. Architecture en une page
 

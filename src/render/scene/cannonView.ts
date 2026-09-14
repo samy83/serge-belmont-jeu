@@ -24,6 +24,7 @@ export class CannonView extends Container {
   private warning = 0;
   private time = 0;
   private swapping = false;
+  private charging = false;
 
   constructor(
     private readonly textures: TextureRegistry,
@@ -114,6 +115,15 @@ export class CannonView extends Container {
       .stroke({ color: GOLD, width: 3, alpha: 0.85, cap: 'round' });
   }
 
+  /** Anticipation : pendant la visee, la bille chargee se gonfle un peu. */
+  setCharging(on: boolean): void {
+    if (this.charging === on) return;
+    this.charging = on;
+    const s = (this.radius / this.textures.ballTextureRadius) * (on ? 1.08 : 1);
+    this.loaded.breathing = !on;
+    if (this.swapTweens && !this.swapping) void this.swapTweens.to(this.loaded.body.scale, { x: s, y: s }, 160, Easing.outBack);
+  }
+
   /** Mise a jour continue : anneau, signal de changement imminent, respiration. */
   update(dtMs: number, progress: number, warningIntensity: number, color: ColorId, nextColor: ColorId): void {
     this.time += dtMs / 1000;
@@ -127,7 +137,7 @@ export class CannonView extends Container {
         this.loaded.body.scale.set((this.radius / this.textures.ballTextureRadius) * k);
         this.loaded.glow.alpha = 0.32 + 0.4 * warningIntensity * (0.5 + 0.5 * Math.sin(this.time * 14));
         this.loaded.breathing = false;
-      } else if (!this.loaded.breathing) {
+      } else if (!this.loaded.breathing && !this.charging) {
         this.loaded.breathing = true;
       }
     }
