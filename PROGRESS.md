@@ -67,8 +67,6 @@ niveau 5 (obstacles gris, billes suspendues, chutes).
   (ex. Cormorant Garamond) rendrait le titre plus fidèle à la DA.
 - Pas de tutoriel ni de premier niveau guidé.
 - Pas de condition de défaite (voulu en V1, voir DECISIONS D10).
-- `TrajectoryView` redessine un Graphics à chaque déplacement du doigt (fine
-  sur mobile moyen ; à convertir en sprites si un profil montre un coût).
 - Le service worker met en cache à la demande (pas de précache exhaustif) :
   la première visite doit charger chaque niveau/photo pour qu'il soit
   disponible hors ligne ensuite.
@@ -117,5 +115,5 @@ while (await step()) {}
 ## Journal des sessions
 
 - **2026-09-14** — Création : analyse de la spec, choix de la stack, coeur +
-  tests, rendu, interface, plateforme, niveaux, documentation. Commits :
-  fondation, rendu/interface/plateforme, polish et docs.
+  tests, rendu, interface, plateforme, niveaux, documentation, game feel.
+  Cinq commits, `npm run check` vert à chaque étape.
