@@ -164,7 +164,20 @@ départ, tout tient), `tests/platform/progression.test.ts` (sauvegarde,
 migration). Le rendu n'est pas testé automatiquement : vérification visuelle
 dans le navigateur (`npm run dev`).
 
-## 10. Extensibilité prévue
+## 10. Risques techniques identifiés
+
+| Risque | Parade en place | Reste à faire |
+| --- | --- | --- |
+| Cadence sur smartphones anciens (fill-rate, particules) | Paliers de qualité, particules bornées, aucun filtre, résolution bornée, `FpsMonitor` | Mesurer sur 2-3 vrais appareils (`?fps`), ajuster les plafonds |
+| Différences WebGL / navigateurs (Safari iOS, WebView Facebook) | PixiJS 8 en WebGL 1/2, build ES2018, aucune API exotique | Tester Safari iOS et le navigateur intégré Facebook |
+| Audio bloqué sur mobile sans geste | Déverrouillage au premier `pointerdown` (UI et canvas) | Vérifier iOS (contexte suspendu au retour d'onglet) |
+| Toucher : doigt qui masque la cible, tir accidentel | Bille fantôme à l'arrivée, annulation en redescendant sous le cadre | Play-tests ; option « tirer au second toucher » si besoin |
+| Mémoire (photos 900×1280 + textures) | Une photo chargée à la fois, textures 192 px, RenderTexture demi-résolution | Décharger la texture de la photo en quittant un niveau si un profil le demande |
+| Équilibrage des niveaux (or trop dur / trop facile) | Seuils en données, script d'auteur | Recaler après play-tests |
+| Perte de sauvegarde (mode privé, quota) | Stockage tolérant (mémoire de secours), migration défensive | Synchronisation en ligne (SyncProvider) plus tard |
+| Dépendances de plateforme (SDK Facebook, publicité) | Interfaces isolées, implémentations nulles, rien n'est supposé disponible | Intégrations réelles derrière les interfaces |
+
+## 11. Extensibilité prévue
 
 - Couleurs : ajouter à `data/colors.ts` et citer dans `colors` d'un niveau.
 - Obstacles : `ObstacleType` (V1 : `block`) ; un type destructible ou mobile
