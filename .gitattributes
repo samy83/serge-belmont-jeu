@@ -1,0 +1,11 @@
+# Fins de ligne LF partout (Windows, macOS, Linux, agents de codage) ; les binaires tels quels.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ogg binary
+*.mp3 binary
+*.wav binary
+*.woff binary
+*.woff2 binary

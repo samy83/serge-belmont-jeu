@@ -1,5 +1,8 @@
+import { readFileSync } from 'node:fs';
 import { fileURLToPath, URL } from 'node:url';
 import { defineConfig } from 'vitest/config';
+
+const pkg = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf-8')) as { version: string };
 
 // Un seul fichier de configuration pour Vite (dev/build) et Vitest (tests).
 // Les alias doivent rester identiques a ceux de tsconfig.json ("paths").
@@ -16,6 +19,9 @@ export default defineConfig({
   // Chemins relatifs : le build se sert depuis n'importe quel sous-dossier
   // (hebergement statique, Facebook Instant Games, Capacitor...).
   base: './',
+  define: {
+    __APP_VERSION__: JSON.stringify(pkg.version),
+  },
   resolve: { alias },
   server: {
     port: 5173,

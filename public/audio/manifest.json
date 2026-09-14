@@ -1,0 +1,18 @@
+{
+  "_doc": "Associe chaque evenement sonore a un fichier (relatif a public/audio/). Sans 'file', la recette 'synth' du code joue. Remplacer un son = ajouter le fichier et le nommer ici, sans toucher au code. Bus : 'sfx' (defaut) ou 'music'.",
+  "shoot": { "synth": "shoot" },
+  "bounce": { "synth": "bounce" },
+  "bounceObstacle": { "synth": "bounceObstacle" },
+  "attach": { "synth": "attach" },
+  "crack": { "synth": "crack" },
+  "explode": { "synth": "explode" },
+  "cascade": { "synth": "cascade" },
+  "reveal": { "synth": "reveal" },
+  "drop": { "synth": "drop" },
+  "land": { "synth": "land" },
+  "colorChange": { "synth": "colorChange", "volume": 0.7 },
+  "win": { "synth": "win" },
+  "lost": { "synth": "lost" },
+  "ui": { "synth": "ui" },
+  "music": { "bus": "music", "loop": true, "volume": 0.5 }
+}

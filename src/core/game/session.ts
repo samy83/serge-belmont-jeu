@@ -21,6 +21,8 @@ export interface ShotResult {
   /** Position de contact, puis position finale apres blottissement. */
   attachFrom?: Vec2;
   attachTo?: Vec2;
+  /** Boules en contact avec la boule posee, AVANT la resolution (pour l'animation de contact). */
+  contacts: Array<{ id: number; x: number; y: number }>;
   resolution: ResolutionSummary;
   /** Le niveau est-il termine apres ce tir ? */
   won: boolean;
@@ -123,6 +125,7 @@ export class GameSession {
       color,
       flight,
       resolution: { steps: [], matched: 0, dropped: 0, chainLength: 0, matches: 0 },
+      contacts: [],
       won: false,
     };
 
@@ -133,6 +136,7 @@ export class GameSession {
       result.ballId = ball.id;
       result.attachFrom = from;
       result.attachTo = to;
+      result.contacts = this.board.neighbors(ball).map((n) => ({ id: n.id, x: n.x, y: n.y }));
       const resolution = resolveBoard(this.board, this.level.physics, ball.id);
       result.resolution = resolution;
       this.matches += resolution.matches;
