@@ -262,7 +262,9 @@ def build_level(index: int, spec: dict, rng: random.Random) -> dict:
                 out.append(ch)
         rows.append("".join(out))
     ball_count = len(assigned)
-    gold = max(3, math.ceil(ball_count / 3.4))
+    # Un tir qui rejoint une paire retire 2 boules existantes : ~N/2 tirs sans
+    # chute ni gros groupe. L'or recompense les chutes et les cascades.
+    gold = max(3, math.ceil(ball_count / 2.3))
     level_id = f"level-{index:02d}"
     return {
         "id": level_id,

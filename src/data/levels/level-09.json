@@ -47,9 +47,9 @@
   },
   "trophies": {
     "metric": "shots",
-    "gold": 16,
-    "silver": 20,
-    "bronze": 25
+    "gold": 24,
+    "silver": 28,
+    "bronze": 33
   },
   "difficulty": {
     "predictionBounces": -1

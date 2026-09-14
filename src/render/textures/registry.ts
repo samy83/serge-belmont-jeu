@@ -5,8 +5,8 @@
 import { Texture } from 'pixi.js';
 import { colorSpec } from '@data/colors';
 import type { ColorId } from '@core/model/types';
+import { drawGlassBall } from './ballCanvas';
 import {
-  makeBallCanvas,
   makeBlockCanvas,
   makeBrushCanvas,
   makeGlowCanvas,
@@ -36,7 +36,7 @@ export class TextureRegistry {
   ball(color: ColorId): Texture {
     let t = this.balls.get(color);
     if (!t) {
-      t = toTexture(makeBallCanvas(colorSpec(color), this.ballSize));
+      t = toTexture(drawGlassBall(colorSpec(color), this.ballSize));
       this.balls.set(color, t);
     }
     return t;

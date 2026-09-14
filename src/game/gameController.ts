@@ -220,6 +220,8 @@ export class GameController {
 
   private ensureInput(): void {
     if (this.input) return;
+    // Le premier contact avec le canvas deverrouille l'audio (exigence des navigateurs mobiles).
+    this.gameApp.app.canvas.addEventListener('pointerdown', () => this.audio.unlock(), { passive: true });
     this.input = new PointerInput(this.gameApp.app.canvas, {
       toLogical: (x, y) => this.gameApp.toLogical(x, y),
       aimAt: (p) => this.session?.aimDirection(p.x, p.y) ?? null,
