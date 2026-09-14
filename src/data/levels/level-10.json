@@ -1,0 +1,58 @@
+{
+  "id": "level-10",
+  "index": 10,
+  "name": "Portrait",
+  "colors": [
+    "ruby",
+    "sapphire",
+    "emerald"
+  ],
+  "colorSequence": {
+    "sequence": [
+      "ruby",
+      "sapphire",
+      "emerald"
+    ],
+    "intervalMs": 3000,
+    "warningMs": 800
+  },
+  "layout": {
+    "legend": {
+      "R": "ruby",
+      "S": "sapphire",
+      "E": "emerald",
+      "#": "block",
+      ".": ""
+    },
+    "packing": "hex",
+    "rows": [
+      "SRREERRERR",
+      "SESRSESESS",
+      "E.RESRRS.E",
+      "S#ERESEE#E",
+      "SRRSSRRSRS",
+      ".EEREESES.",
+      "..SSRSRR..",
+      "...ESES..."
+    ]
+  },
+  "photo": {
+    "src": "photos/level-10.jpg",
+    "title": "Portrait",
+    "credit": "Photographie de substitution — à remplacer",
+    "focusY": 0.4
+  },
+  "reveal": {
+    "radiusFactor": 1.7,
+    "softness": 0.55
+  },
+  "trophies": {
+    "metric": "shots",
+    "gold": 19,
+    "silver": 23,
+    "bronze": 28
+  },
+  "difficulty": {
+    "predictionBounces": -1
+  }
+}

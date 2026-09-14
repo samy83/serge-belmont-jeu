@@ -1,0 +1,53 @@
+{
+  "id": "level-01",
+  "index": 1,
+  "name": "Première lumière",
+  "colors": [
+    "ruby",
+    "sapphire",
+    "emerald"
+  ],
+  "colorSequence": {
+    "sequence": [
+      "ruby",
+      "sapphire",
+      "emerald"
+    ],
+    "intervalMs": 5000,
+    "warningMs": 1200
+  },
+  "layout": {
+    "legend": {
+      "R": "ruby",
+      "S": "sapphire",
+      "E": "emerald",
+      "#": "block",
+      ".": ""
+    },
+    "packing": "hex",
+    "rows": [
+      ".SERERRSS.",
+      ".SRESEERR.",
+      "..ESRRSSE."
+    ]
+  },
+  "photo": {
+    "src": "photos/level-01.jpg",
+    "title": "Première lumière",
+    "credit": "Photographie de substitution — à remplacer",
+    "focusY": 0.4
+  },
+  "reveal": {
+    "radiusFactor": 1.7,
+    "softness": 0.55
+  },
+  "trophies": {
+    "metric": "shots",
+    "gold": 7,
+    "silver": 11,
+    "bronze": 16
+  },
+  "difficulty": {
+    "predictionBounces": -1
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "id": "level-04",
+  "index": 4,
+  "name": "Deux fenêtres",
+  "colors": [
+    "ruby",
+    "sapphire",
+    "emerald"
+  ],
+  "colorSequence": {
+    "sequence": [
+      "ruby",
+      "sapphire",
+      "emerald"
+    ],
+    "intervalMs": 4000,
+    "warningMs": 1000
+  },
+  "layout": {
+    "legend": {
+      "R": "ruby",
+      "S": "sapphire",
+      "E": "emerald",
+      "#": "block",
+      ".": ""
+    },
+    "packing": "hex",
+    "rows": [
+      "SSEE##RERE",
+      "ERRS##ESSE",
+      ".ESE##RRE.",
+      ".SE.##.SS."
+    ]
+  },
+  "photo": {
+    "src": "photos/level-04.jpg",
+    "title": "Deux fenêtres",
+    "credit": "Photographie de substitution — à remplacer",
+    "focusY": 0.4
+  },
+  "reveal": {
+    "radiusFactor": 1.7,
+    "softness": 0.55
+  },
+  "trophies": {
+    "metric": "shots",
+    "gold": 8,
+    "silver": 12,
+    "bronze": 17
+  },
+  "difficulty": {
+    "predictionBounces": -1
+  }
+}

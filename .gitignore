@@ -1,0 +1,27 @@
+# Dependances et sorties de build
+node_modules/
+dist/
+dist-ssr/
+coverage/
+
+# Environnement : jamais de secrets dans Git (voir .env.example)
+.env
+.env.local
+.env.*.local
+
+# Journaux et fichiers temporaires
+*.log
+npm-debug.log*
+.vite/
+.cache/
+*.tsbuildinfo
+
+# Editeurs / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+
+# Captures de verification (non versionnees, regenerables)
+captures/

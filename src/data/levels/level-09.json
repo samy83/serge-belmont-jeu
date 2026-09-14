@@ -1,0 +1,57 @@
+{
+  "id": "level-09",
+  "index": 9,
+  "name": "Le ciel",
+  "colors": [
+    "ruby",
+    "sapphire",
+    "emerald"
+  ],
+  "colorSequence": {
+    "sequence": [
+      "ruby",
+      "sapphire",
+      "emerald"
+    ],
+    "intervalMs": 3200,
+    "warningMs": 850
+  },
+  "layout": {
+    "legend": {
+      "R": "ruby",
+      "S": "sapphire",
+      "E": "emerald",
+      "#": "block",
+      ".": ""
+    },
+    "packing": "hex",
+    "rows": [
+      "SSRREERRSS",
+      "EESSRSEERR",
+      "SRRE..RRSS",
+      "SESE..EERE",
+      ".RRSRRSSR.",
+      "..EESERE..",
+      "...SRSE..."
+    ]
+  },
+  "photo": {
+    "src": "photos/level-09.jpg",
+    "title": "Le ciel",
+    "credit": "Photographie de substitution — à remplacer",
+    "focusY": 0.4
+  },
+  "reveal": {
+    "radiusFactor": 1.7,
+    "softness": 0.55
+  },
+  "trophies": {
+    "metric": "shots",
+    "gold": 16,
+    "silver": 20,
+    "bronze": 25
+  },
+  "difficulty": {
+    "predictionBounces": -1
+  }
+}

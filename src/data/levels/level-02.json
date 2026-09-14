@@ -1,0 +1,54 @@
+{
+  "id": "level-02",
+  "index": 2,
+  "name": "Reflets",
+  "colors": [
+    "ruby",
+    "sapphire",
+    "emerald"
+  ],
+  "colorSequence": {
+    "sequence": [
+      "ruby",
+      "sapphire",
+      "emerald"
+    ],
+    "intervalMs": 4500,
+    "warningMs": 1100
+  },
+  "layout": {
+    "legend": {
+      "R": "ruby",
+      "S": "sapphire",
+      "E": "emerald",
+      "#": "block",
+      ".": ""
+    },
+    "packing": "hex",
+    "rows": [
+      "SEESSESSRS",
+      ".SRREREER.",
+      "..ESSRSS..",
+      "...REER..."
+    ]
+  },
+  "photo": {
+    "src": "photos/level-02.jpg",
+    "title": "Reflets",
+    "credit": "Photographie de substitution — à remplacer",
+    "focusY": 0.4
+  },
+  "reveal": {
+    "radiusFactor": 1.7,
+    "softness": 0.55
+  },
+  "trophies": {
+    "metric": "shots",
+    "gold": 9,
+    "silver": 13,
+    "bronze": 18
+  },
+  "difficulty": {
+    "predictionBounces": -1
+  }
+}

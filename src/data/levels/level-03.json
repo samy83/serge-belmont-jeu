@@ -1,0 +1,54 @@
+{
+  "id": "level-03",
+  "index": 3,
+  "name": "La pierre grise",
+  "colors": [
+    "ruby",
+    "sapphire",
+    "emerald"
+  ],
+  "colorSequence": {
+    "sequence": [
+      "ruby",
+      "sapphire",
+      "emerald"
+    ],
+    "intervalMs": 4500,
+    "warningMs": 1100
+  },
+  "layout": {
+    "legend": {
+      "R": "ruby",
+      "S": "sapphire",
+      "E": "emerald",
+      "#": "block",
+      ".": ""
+    },
+    "packing": "hex",
+    "rows": [
+      ".RRERRERR.",
+      ".SSESSESE.",
+      "..RR##RS..",
+      "..ESSRER.."
+    ]
+  },
+  "photo": {
+    "src": "photos/level-03.jpg",
+    "title": "La pierre grise",
+    "credit": "Photographie de substitution — à remplacer",
+    "focusY": 0.4
+  },
+  "reveal": {
+    "radiusFactor": 1.7,
+    "softness": 0.55
+  },
+  "trophies": {
+    "metric": "shots",
+    "gold": 8,
+    "silver": 12,
+    "bronze": 17
+  },
+  "difficulty": {
+    "predictionBounces": -1
+  }
+}

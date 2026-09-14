@@ -1,0 +1,56 @@
+{
+  "id": "level-06",
+  "index": 6,
+  "name": "Cascade",
+  "colors": [
+    "ruby",
+    "sapphire",
+    "emerald"
+  ],
+  "colorSequence": {
+    "sequence": [
+      "ruby",
+      "sapphire",
+      "emerald"
+    ],
+    "intervalMs": 4000,
+    "warningMs": 1000
+  },
+  "layout": {
+    "legend": {
+      "R": "ruby",
+      "S": "sapphire",
+      "E": "emerald",
+      "#": "block",
+      ".": ""
+    },
+    "packing": "hex",
+    "rows": [
+      "RRSEESEERS",
+      ".SRSRRSRE.",
+      ".ERSEESES.",
+      "..ERSRRE..",
+      "..RSRSES..",
+      "...SERS..."
+    ]
+  },
+  "photo": {
+    "src": "photos/level-06.jpg",
+    "title": "Cascade",
+    "credit": "Photographie de substitution — à remplacer",
+    "focusY": 0.4
+  },
+  "reveal": {
+    "radiusFactor": 1.7,
+    "softness": 0.55
+  },
+  "trophies": {
+    "metric": "shots",
+    "gold": 13,
+    "silver": 17,
+    "bronze": 22
+  },
+  "difficulty": {
+    "predictionBounces": -1
+  }
+}

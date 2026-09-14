@@ -1,0 +1,56 @@
+{
+  "id": "level-08",
+  "index": 8,
+  "name": "Miroir",
+  "colors": [
+    "ruby",
+    "sapphire",
+    "emerald"
+  ],
+  "colorSequence": {
+    "sequence": [
+      "ruby",
+      "sapphire",
+      "emerald",
+      "sapphire"
+    ],
+    "intervalMs": 3500,
+    "warningMs": 900
+  },
+  "layout": {
+    "legend": {
+      "R": "ruby",
+      "S": "sapphire",
+      "E": "emerald",
+      "#": "block",
+      ".": ""
+    },
+    "packing": "hex",
+    "rows": [
+      "ESS....REE",
+      "ERR....SRS",
+      "SS......SE",
+      "EE......RE",
+      "S........R"
+    ]
+  },
+  "photo": {
+    "src": "photos/level-08.jpg",
+    "title": "Miroir",
+    "credit": "Photographie de substitution — à remplacer",
+    "focusY": 0.4
+  },
+  "reveal": {
+    "radiusFactor": 1.7,
+    "softness": 0.55
+  },
+  "trophies": {
+    "metric": "shots",
+    "gold": 7,
+    "silver": 11,
+    "bronze": 16
+  },
+  "difficulty": {
+    "predictionBounces": -1
+  }
+}

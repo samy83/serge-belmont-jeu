@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#0b0a14" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="description" content="Serge Belmont — un jeu de billes de cristal qui révèle des photographies." />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <title>Serge Belmont</title>
+  </head>
+  <body>
+    <!-- Le canvas du jeu est insere dans #game par src/main.ts ; l'interface DOM vit dans #ui. -->
+    <div id="game"></div>
+    <div id="ui"></div>
+    <noscript>Ce jeu a besoin de JavaScript.</noscript>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
