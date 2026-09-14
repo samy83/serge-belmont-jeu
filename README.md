@@ -11,6 +11,13 @@ nombre de tirs.
 > Prototype : 10 niveaux, photographies et sons de substitution. La direction
 > artistique (verre, cristal, lumière, souvenir) est en place pour être jugée.
 
+## Jouer en ligne
+
+Chaque push sur `main` publie le jeu sur GitHub Pages
+(`.github/workflows/pages.yml`) : **https://samy83.github.io/serge-belmont-jeu/**
+— à ouvrir sur un téléphone, en portrait. La progression est sauvegardée sur
+l'appareil.
+
 ## Démarrer
 
 Prérequis : Node.js ≥ 20 (testé avec 22), npm ≥ 10. Python 3 + Pillow
