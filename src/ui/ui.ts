@@ -216,7 +216,7 @@ export class Ui {
     if (state.tier === 'none') {
       this.hudTrophy.innerHTML = `${gem('none')}<b>sans trophée</b>`;
     } else {
-      const hint = state.nextThreshold !== null && state.remaining === 0 ? 'dernier tir' : `encore ${state.remaining}`;
+      const hint = state.remaining === 0 ? 'à la limite' : `encore ${state.remaining} tir${state.remaining > 1 ? 's' : ''}`;
       this.hudTrophy.innerHTML = `${gem(state.tier)}${TIER_LABEL[state.tier]}<b>${hint}</b>`;
     }
   }
@@ -394,6 +394,16 @@ export class Ui {
     el.querySelector<HTMLSelectElement>('select[data-quality]')?.addEventListener('change', (e) => {
       this.actions.setQuality((e.target as HTMLSelectElement).value as Settings['quality']);
     });
+  }
+
+  /** Banniere d'entree de niveau : le nom, puis l'objectif, qui s'efface seule. */
+  banner(title: string, subtitle: string): void {
+    this.root.querySelector('.banner')?.remove();
+    const b = document.createElement('div');
+    b.className = 'banner';
+    b.innerHTML = `<div class="banner-title">${esc(title)}</div><div class="banner-sub">${esc(subtitle)}</div>`;
+    this.root.appendChild(b);
+    setTimeout(() => b.remove(), 2400);
   }
 
   toast(text: string): void {

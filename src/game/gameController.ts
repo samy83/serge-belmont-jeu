@@ -214,6 +214,7 @@ export class GameController {
     this.phase = 'playing';
     this.ui.showHud(level.index, level.name);
     this.refreshHud();
+    this.ui.banner(level.name, `Niveau ${level.index} — révélez la photographie`);
     this.progression.recordPlay(level.id);
     await this.view.init(this.config.assetBaseUrl);
   }

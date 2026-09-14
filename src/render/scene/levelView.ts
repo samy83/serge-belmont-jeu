@@ -37,7 +37,7 @@ export class LevelView {
   readonly root = new Container();
   readonly photoReveal: PhotoReveal;
   readonly cannon: CannonView;
-  readonly trajectory = new TrajectoryView();
+  readonly trajectory: TrajectoryView;
   readonly effects: Effects;
   private readonly ballsLayer = new Container();
   private readonly obstaclesLayer = new Container();
@@ -62,6 +62,7 @@ export class LevelView {
 
     this.photoReveal = new PhotoReveal(renderer, textures, b.width, b.floorY, level.reveal);
     this.effects = new Effects(textures, quality);
+    this.trajectory = new TrajectoryView(textures);
     this.drawFrame();
 
     this.cannon = new CannonView(textures, b.ballRadius, session.currentColor, session.sequencer.next, quality.ballGlow);
@@ -239,10 +240,9 @@ export class LevelView {
       const v = this.balls.get(n.id);
       if (v) void v.jiggle(this.tweens, n.x - shot.attachTo.x, n.y - shot.attachTo.y, 0.8);
     }
-    await Promise.all([
-      this.tweens.to(flying, { x: shot.attachTo.x, y: shot.attachTo.y }, 140, Easing.outBack),
-      flying.pop(this.tweens, 0.8),
-    ]);
+    // Le rebond elastique de la pose n'est pas attendu : l'explosion eventuelle enchaine sans temps mort.
+    void flying.pop(this.tweens, 0.8);
+    await this.tweens.to(flying, { x: shot.attachTo.x, y: shot.attachTo.y }, 140, Easing.outBack);
     if (token.cancelled) return;
 
     for (const step of shot.resolution.steps) {
